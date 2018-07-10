@@ -1,7 +1,7 @@
 OPA - code developped by Andreas Streun - PSI. 
 Version uploaded : 3.37
 
-https://ados.web.psi.ch/opa/
+Website : https://ados.web.psi.ch/opa/
 
 From the note opa_v.3.37.pdf, written by A. Streun - Feb. 21th, 2012 :
 
@@ -13,3 +13,6 @@ lattice with optimized 2D dynamic apertures, to be passed on to other codes like
 MAD, which use more complete models."
 
 Tour of OPA : https://ados.web.psi.ch/opa/tour/index.html
+
+Download the .zip file and have a go !
+Lina HOUMMI
