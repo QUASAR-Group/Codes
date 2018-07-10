@@ -1,0 +1,148 @@
+G4BL_DIR=D:\G4Beamline
+G4beamline Process ID 5700
+
+*************************************************************
+ g4beamline version: 3.02.1                        (May 24 2016)
+                      Copyright : Tom Roberts, Muons, Inc.
+                        License : Gnu Public License
+                            WWW : http://g4beamline.muonsinc.com
+*************************************************************
+ Geant4 version Name: geant4-10-02-patch-01    (26-February-2016)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+geometry                   nPoints=100 printGeometry=0 visual=0
+                           tolerance=0.002
+*	transport.g4bl - test G4beamline transport in a uniform B field
+param        maxStep       100.0  (already defined)
+G4PhysListFactory::GetReferencePhysList <QGSP_BIC>  EMoption= 0
+<<< Geant4 Physics List simulation engine: QGSP_BIC 4.0
+
+<<< Reference Physics List QGSP_BIC is built
+
+physics      QGSP_BIC      disable= inactivate= deactivate= doStochastics=1
+                           fluct=1 minRangeCut=1 list=0 gammaToMuPair=0
+                           spinTracking=0 synchrotronRadiation=0
+                           synchrotronRadiationMuon=0 maxTime=1e+006
+param        histoFile     transport,maxStep=100.0
+param        maxStep       100.0
+beam    GAUSSIAN particle=e- nEvents=1000 firstEvent=-1 lastEvent=2147483647 beamX=0.0 beamY=0.0 beamZ=-3700000000000000000000.0 maxR=1000000.0 
+		meanMomentum=25.0 weight=1.000000 
+		sigmaX=0.0 sigmaY=0.0 sigmaZ=0.0 sigmaXp=0.01000 sigmaYp=0.00000 
+		sigmaP=0.0 sigmaT=0.000 meanXp=0.00000 meanYp=0.00000 meanT=0.000 
+fieldexpr Field: Map 1331 points  Max Relative Error = 0.0000
+fieldexpr    Field         factorB=1 factorE=1 timeOffset=0 Bx= By=0.01 Bz=
+                           Br= Bphi= Ex= Ey= Ez= Er= time= nX=11 nY=11 nZ=11
+                           nR=11 nT=11 tolerance=0.001 length=5e+004
+                           width=5e+004 height=5e+004 radius=-1 tmin=0 tmax=0
+reference                  particle=e- beamX=0 beamY=0 beamZ=0 beamT=0
+                           rotation= referenceMomentum=25 beamXp=0 beamYp=0
+                           meanMomentum=25 meanXp=0 meanYp=0 tuneZ=-3.7e+021
+                           tuneMomentum=-3.7e+021 tolerance=0.001 noEfield=0
+                           noBfield=0 noEloss=0 P=25
+place   Field   copies=1 x=0.0 y=0.0 z=0.0 
+virtualdetector Det        radius=0 innerRadius=0 height=100 width=100
+                           length=0.1 maxStep=100 material= color=0,1,0
+                           noSingles=0 format= filename= file= require=
+                           referenceParticle=0 coordinates=reference kill=0
+place   Det     copies=1 x=0.0 y=0.0 z=0.1 
+particlefilter Filter      radius=-1 innerRadius=0 height=100 width=100
+                           length=0.1 maxStep=100 material= color=1,1,1 decay=
+                           kill=e- keep= nWait=7 referenceWait=1 require=
+                           steppingVerbose=0 decays=
+place   Filter  copies=1 x=0.0 y=0.0 z=0.2 
+box          W             height=5e+004 width=5e+004 length=1 maxStep=100
+                           material= color=1,0,0 kill=0
+place   W       copies=1 x=0.0 y=0.0 z=25000.0 
+trace                      nTrace=100 format=rootTrace oneNTuple=1
+                           primaryOnly=0 traceTune=1 filename=AllTracks
+                           file=AllTracks require= coordinates=reference
+
+World size (before incrementing by 201.357 mm): 50000.0 H  50000.0 W  50001.0 L
+
+PARAMETERS:
+            Zcl=25000.5
+     deltaChord=3.0
+deltaIntersection=0.1
+   deltaOneStep=0.01
+         epsMax=0.05
+         epsMin=2.5e-7
+ eventTimeLimit=30
+    fieldVoxels=200,200,200
+      histoFile=transport,maxStep=100.0
+    histoUpdate=0
+        maxStep=100.0
+        minStep=0.01
+ steppingFormat=N GLOBAL CL KE STEP VOL PROCESS
+steppingVerbose=0
+         viewer=none
+ wallClockLimit=-1
+  worldMaterial=Vacuum
+     zTolerance=2.0
+BLMappedMagnet::Construct Field parent= relZ=0.0
+Checking overlaps for volume Det ... OK! 
+BLCMDvirtualdetector::Construct Det parent= relZ=0.1 globZ=0.1
+Checking overlaps for volume Filter ... OK! 
+BLCMDparticlefilter::Construct Filter parent=
+Checking overlaps for volume W ... OK! 
+BLCMDbox::Construct W parent= relZ=25000.0 globZ=25000.0
+	zmin=24999.5 zmax=25000.5
+### Adding tracking cuts for neutron  TimeCut(ns)= 10000  KinEnergyCut(MeV)= 0
+
+Geometry test nPoints=100 tolerance=0.002 mm:
+Testing geometry for children of group 'World':
+Total geometry errors = 0  0 seconds
+
+================= Prepare Tune Particle(s) ===========
+================= Begin Tune Particle(s) =============
+Run complete  1 Events  0 seconds
+================== Begin Reference Particle(s) ===============
+
+# segmentRCVector
+#N minZ maxZ globX globY globZ axisX axisY axisZ angleDeg corr
+0 -1.798e+308 1.798e+308 0.0002912 0 -4.241e-008 0.0000 -1.0000 0.0000 0.0 1.000
+
+Run complete  1 Events  0 seconds
+================== Prepare Tracking Beam ==================
+Stochastic processes are enabled.
+================== Begin Tracking Beam ===============
+Event 1 Completed  1 events  realTime=1 sec  1.0 ev/sec
+Event 2 Completed  2 events  realTime=1 sec  2.0 ev/sec
+Event 3 Completed  3 events  realTime=1 sec  3.0 ev/sec
+Event 4 Completed  4 events  realTime=1 sec  4.0 ev/sec
+Event 5 Completed  5 events  realTime=1 sec  5.0 ev/sec
+Event 6 Completed  6 events  realTime=1 sec  6.0 ev/sec
+Event 7 Completed  7 events  realTime=1 sec  7.0 ev/sec
+Event 8 Completed  8 events  realTime=1 sec  8.0 ev/sec
+Event 9 Completed  9 events  realTime=1 sec  9.0 ev/sec
+Event 10 Completed  10 events  realTime=1 sec  10.0 ev/sec
+Event 20 Completed  20 events  realTime=1 sec  20.0 ev/sec
+Event 30 Completed  30 events  realTime=1 sec  30.0 ev/sec
+Event 40 Completed  40 events  realTime=1 sec  40.0 ev/sec
+Event 50 Completed  50 events  realTime=1 sec  50.0 ev/sec
+Event 60 Completed  60 events  realTime=1 sec  60.0 ev/sec
+Event 70 Completed  70 events  realTime=1 sec  70.0 ev/sec
+Event 80 Completed  80 events  realTime=2 sec  40.0 ev/sec
+Event 90 Completed  90 events  realTime=2 sec  45.0 ev/sec
+Event 100 Completed  100 events  realTime=2 sec  50.0 ev/sec
+Event 200 Completed  200 events  realTime=3 sec  66.7 ev/sec
+Event 300 Completed  300 events  realTime=4 sec  75.0 ev/sec
+Event 400 Completed  400 events  realTime=5 sec  80.0 ev/sec
+Event 500 Completed  500 events  realTime=7 sec  71.4 ev/sec
+Event 600 Completed  600 events  realTime=8 sec  75.0 ev/sec
+Event 700 Completed  700 events  realTime=9 sec  77.8 ev/sec
+Event 800 Completed  800 events  realTime=10 sec  80.0 ev/sec
+Event 900 Completed  900 events  realTime=11 sec  81.8 ev/sec
+Event 1000 Completed  1000 events  realTime=12 sec  83.3 ev/sec
+Run complete  1000 Events  12 seconds
+NTuple Det                 6000 entries
+NTuple AllTracks         317000 entries
+NTuple wrote Root File 'transport,maxStep=100.0.root'
+particlefilter Filter: 0 decays  1002 killed
+
+Exceptions: 0 Fatal, 0 Events Aborted, 0 Stuck Tracks (stopped), 0 Warnings
+g4beamline: simulation complete
+Error: cannot open file "iostream"  (tmpfile)(2)
+*** Interpreter error recovered ***
