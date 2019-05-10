@@ -1,0 +1,24 @@
+*	transport.g4bl - test G4beamline transport in a uniform B field
+param -unset maxStep=10
+
+physics QGSP_BIC
+
+param maxStep=$maxStep histoFile=transport,maxStep=$maxStep
+#output $histoFile.out
+
+# beam has angular divergence, but all particles come back to (0,0,0).
+
+beam gaussian particle=e- meanMomentum=25 sigmaXp=0.01 nEvents=1000
+fieldexpr Field By=0.01 height=50000 width=50000 length=50000
+reference referenceMomentum=25 particle=e- beamZ=0.0
+place Field z=0
+
+virtualdetector Det height=100 width=100 length=0.1 color=0,1,0 coordinates=reference
+place Det z=0 front=1
+
+particlefilter Filter height=100 width=100 length=0.1 kill=e- nWait=7
+place Filter z=0.1 front=1
+
+box W height=50000 width=50000 length=1 color=1,0,0
+place W z=25000
+trace nTrace=100 oneNTuple=1  format=root coordinates=reference #only save 100 tracks 

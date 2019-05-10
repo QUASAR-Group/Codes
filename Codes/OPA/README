@@ -1,0 +1,18 @@
+OPA - code developped by Andreas Streun - PSI. 
+Version uploaded : 3.37
+
+Website : https://ados.web.psi.ch/opa/
+
+From the note opa_v.3.37.pdf, written by A. Streun - Feb. 21th, 2012 :
+
+"OPA's main purpose is to support the development of electron (positron) storage rings. Emphasis
+is on visualization and interactivity. OPA is in particular useful for designing high
+brightness light source lattices, but may be used for transfer lines and other types of lattices
+as well. Storage ring design with OPA starts from scratch and ends at a bare (i.e. error free)
+lattice with optimized 2D dynamic apertures, to be passed on to other codes like TRACY or
+MAD, which use more complete models."
+
+Tour of OPA : https://ados.web.psi.ch/opa/tour/index.html
+
+Download the .zip file and have a go !
+Lina HOUMMI
