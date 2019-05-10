@@ -1,0 +1,30 @@
+physics QGSP_BERT
+
+g4ui when=4 "/vis/scene/add/axes 700 0 2000 1500 mm"
+expandworld 3000,3000,1000 
+ 
+
+beam gaussian particle=proton nEvents=1E4 beamZ=-1000 sigmaX=10 sigmaY=10 sigmaXp=0 sigmaYp=0 meanMomentum=230 sigmaP=0
+
+ 
+
+tubs mytub innerRadius=250 outerRadius=251 length=1000 material=Fe kill=1 color=1,0,1,0.4
+
+ 
+
+genericsectorbend DIP1 angle=60 fieldCenterRadius=800 fieldInnerRadius=400\
+fieldOuterRadius=1200 fieldHeight=520 ironInnerRadius=200 ironOuterRadius=1800\
+ironHeight=3000 fieldMaterial=Vacuum kill=1 ironColor=0,0,1,1 fringe=1 fringeFactor=0.7\
+DipoleField=-1.0
+
+ 
+
+place DIP1 z=1000
+
+cornerarc CDIP1 z=1000 angle=60 centerRadius=800 radiusCut=5000
+
+place mytub z=5000
+
+ 
+fieldlines center=600,0,1000 radius=1500 nLines=1000 exit=0
+fieldlines center=700,0,2000 radius=1500 nLines=1000 exit=1
